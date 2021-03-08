@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Amicable Numbers</title>
+		
+		<style>
+			.output {
+				color: maroon;
+			}
+			
+			.welcome {
+				color: #800000;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<h1 class = "welcome">Check If Any Two Numbers Are Amicable!</h1>
+		<form onsubmit="return false" action = "">
+			<input type = "text" id="num1"/><br><br>
+			<input type = "text" id="num2"/><br><br>
+			<input type = "submit" onclick="amicable();">
+		</form>
+		
+		<script>
+			function amicable() {
+				//variables
+				var num1 = document.getElementById("num1").value;
+				var num2 = document.getElementById("num2").value;
+				
+				var sum1 = 0;
+				var sum2 = 0;
+				
+				var factors1 = [];
+				var factors2 = [];
+				
+				var counter1 = -1;
+				var counter2 = -1;
+				
+				//determining factors for first number
+				for (var i = 0; i <= num1; i++) {
+					if (num1 % i == 0) {
+						counter1++;
+						sum1 += i;
+						factors1[counter1] = i;
+						
+					}
+				}
+				
+				//determining factors for second number
+				for (var i = 0; i <= num2; i++) {
+					if (num2 % i == 0) {
+						counter2++;
+						sum2 += i;
+						factors2[counter2] = i;
+					}
+				}
+				
+				//shaving off extra factor (self-factor)
+				factors1.length--;
+				factors2.length--;
+				
+				//printing out factores (regardless to amicable or not
+				alert(num1 + " FACTORS: " + factors1);
+				alert(num2 + " FACTORS: " + factors2);
+				
+				//assessing if they are amicable and printing corresponding message
+				if (sum1 == sum2){
+					//printing out responses
+					document.getElementById("output").innerHTML = num1 + " and " 
+					+ num2 + " are amicable numbers!";
+					
+				} else {
+					document.getElementById("output").innerHTML = num1 + " and " 
+					+ num2 + " are NOT amicable numbers!";
+				}
+			}
+			
+		</script>
+		<br>
+		<a href="index.html"><button>Clear!</button></a>
+		<br><br>
+		<div id = "output" style ="width: 200px; height: 75px; border: 1px 
+		solid;"></div>
+		
+	</body>
+</html>
